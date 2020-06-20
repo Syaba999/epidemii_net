@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 final ThemeData appTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primaryColor: Colors.white,
+  accentColor: Colors.cyan,
   visualDensity: VisualDensity.adaptivePlatformDensity,
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.cyan,
+  ),
 );

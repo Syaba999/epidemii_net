@@ -23,11 +23,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "address" : MessageLookupByLibrary.simpleMessage("Адрес"),
+    "cantBeEmpty" : MessageLookupByLibrary.simpleMessage("не может быть пустым"),
+    "confirmPassword" : MessageLookupByLibrary.simpleMessage("Повторите пароль"),
+    "domainMaxLengthError" : MessageLookupByLibrary.simpleMessage("доменное имя не может быть длинне 255 символов"),
     "email" : MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "firstName" : MessageLookupByLibrary.simpleMessage("Имя"),
+    "lastName" : MessageLookupByLibrary.simpleMessage("Фамилия"),
     "login" : MessageLookupByLibrary.simpleMessage("Вход"),
     "mailValidatorText" : MessageLookupByLibrary.simpleMessage("Введите корректный адрес электронной почты"),
+    "middleName" : MessageLookupByLibrary.simpleMessage("Отчество"),
+    "passConfirmValidatorText" : MessageLookupByLibrary.simpleMessage("пароли не совпадают"),
     "passMinLength" : m0,
     "password" : MessageLookupByLibrary.simpleMessage("Пароль"),
+    "phone" : MessageLookupByLibrary.simpleMessage("Телефон"),
+    "phoneValidatorText" : MessageLookupByLibrary.simpleMessage("введите номер телефона польностью"),
     "registration" : MessageLookupByLibrary.simpleMessage("Регистрация")
   };
 }

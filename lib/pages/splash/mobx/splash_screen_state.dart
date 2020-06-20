@@ -13,7 +13,7 @@ class SplashScreenState = _SplashScreenState with _$SplashScreenState;
 abstract class _SplashScreenState extends MobxBase with Store {
   void init(GlobalKey<NavigatorState> navigatorKey) {
     Future.wait([
-      Future.delayed(Duration(seconds: 1)),
+      Future.delayed(Duration(seconds: 3)),
       _initApp(navigatorKey),
     ]).then((value) => _allReady());
   }
@@ -21,16 +21,16 @@ abstract class _SplashScreenState extends MobxBase with Store {
   Future<void> _initApp(GlobalKey<NavigatorState> navigatorKey) async {
     Injector.initDI(navigatorKey);
     await Injector.getInjector.allReady();
-    _allReady();
   }
 
   void _allReady() {
     final prefs = Injector.getInjector.get<PersistentDataSource>();
     final navigator = Injector.getInjector.get<NavigationService>().navigator;
+    navigator.popAndPushNamed(homePageRoute);
     if (prefs.getUser() == null) {
-      navigator.popAndPushNamed(loginPageRoute);
+      //navigator.popAndPushNamed(loginPageRoute);
     } else {
-      navigator.popAndPushNamed(homePageRoute);
+      //navigator.popAndPushNamed(homePageRoute);
     }
   }
 

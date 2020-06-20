@@ -1,51 +1,25 @@
+import 'package:epidemiinet/pages/cabinet_tab/cabinet_tab_page.dart';
+import 'package:epidemiinet/pages/home/mobx/home_state.dart';
+import 'package:epidemiinet/pages/map_tab/map_tab_page.dart';
+import 'package:epidemiinet/pages/news_tab/news_tab_page.dart';
+import 'package:epidemiinet/pages/notify_tab/notify_tab_page.dart';
 import 'package:flutter/material.dart';
+import 'package:mobx_provider/mobx_provider.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-  var _selectedIndex = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return MobxStatelessObserver(
+      store: HomeState(),
+      builder: _content,
+    );
+  }
+
+  Widget _content(BuildContext context, HomeState state) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Flutter Demo Home Page"),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).accentColor,
         unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
@@ -64,44 +38,17 @@ class _HomePageState extends State<HomePage> {
             title: Text("Кабинет"),
           ),
         ],
-        onTap: _onItemTapped,
-        currentIndex: _selectedIndex,
+        onTap: state.selectTab,
+        currentIndex: state.selectedTab,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: pages[state.selectedTab],
     );
   }
+
+  List<Widget> pages = [
+    NewsTabPage(),
+    NotifyTabPage(),
+    MapTabPage(),
+    CabinetTabPage(),
+  ];
 }

@@ -4,5 +4,15 @@
   "password": "Пароль",
   "registration": "Регистрация",
   "mailValidatorText": "Введите корректный адрес электронной почты",
-  "passMinLength": "не менее {count} символов"
+  "passMinLength": "не менее {count} символов",
+  "passConfirmValidatorText": "пароли не совпадают",
+  "confirmPassword": "Повторите пароль",
+  "cantBeEmpty": "не может быть пустым",
+  "firstName": "Имя",
+  "lastName": "Фамилия",
+  "middleName": "Отчество",
+  "phone": "Телефон",
+  "address": "Адрес",
+  "domainMaxLengthError": "доменное имя не может быть длинне 255 символов",
+  "phoneValidatorText": "введите номер телефона польностью"
 }

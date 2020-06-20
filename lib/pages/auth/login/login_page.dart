@@ -1,4 +1,5 @@
 import 'package:epidemiinet/generated/l10n.dart';
+import 'package:epidemiinet/helpers/validate_helper.dart';
 import 'package:epidemiinet/pages/auth/login/mobx/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx_provider/mobx_provider.dart';
@@ -24,25 +25,28 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(labelText: S.of(context).email),
-                validator: state.validateMail,
+                validator: ValidateHelper.validateMail,
               ),
               TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(labelText: S.of(context).password),
-                validator: state.validatePassword,
+                validator: ValidateHelper.validatePassword,
               ),
               SizedBox(
                 height: 16,
               ),
               RaisedButton(
                 onPressed: () {
-                  if (_formKey.currentState.validate()) {}
+                  if (_formKey.currentState.validate()) {
+                    state.signInPress();
+                  }
                 },
                 child: Text(S.of(context).login),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: state.signUpPress,
                 child: Text(S.of(context).registration),
               )
             ],

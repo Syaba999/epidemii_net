@@ -1,5 +1,6 @@
 import 'package:epidemiinet/data/persistent/persistent_data_source.dart';
 import 'package:epidemiinet/pages/auth/login/login_page.dart';
+import 'package:epidemiinet/pages/auth/reg/reg_page.dart';
 import 'package:epidemiinet/pages/home/home_page.dart';
 import 'package:epidemiinet/services/navigation_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,5 +21,6 @@ class Injector {
   static void _registerPagesFactories() {
     _injector.registerFactory(() => HomePage());
     _injector.registerFactory(() => LoginPage());
+    _injector.registerFactory(() => RegPage());
   }
 }

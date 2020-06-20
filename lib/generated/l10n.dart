@@ -92,6 +92,106 @@ class S {
       args: [count],
     );
   }
+
+  /// `пароли не совпадают`
+  String get passConfirmValidatorText {
+    return Intl.message(
+      'пароли не совпадают',
+      name: 'passConfirmValidatorText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Повторите пароль`
+  String get confirmPassword {
+    return Intl.message(
+      'Повторите пароль',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `не может быть пустым`
+  String get cantBeEmpty {
+    return Intl.message(
+      'не может быть пустым',
+      name: 'cantBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Имя`
+  String get firstName {
+    return Intl.message(
+      'Имя',
+      name: 'firstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Фамилия`
+  String get lastName {
+    return Intl.message(
+      'Фамилия',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отчество`
+  String get middleName {
+    return Intl.message(
+      'Отчество',
+      name: 'middleName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Телефон`
+  String get phone {
+    return Intl.message(
+      'Телефон',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Адрес`
+  String get address {
+    return Intl.message(
+      'Адрес',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `доменное имя не может быть длинне 255 символов`
+  String get domainMaxLengthError {
+    return Intl.message(
+      'доменное имя не может быть длинне 255 символов',
+      name: 'domainMaxLengthError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `введите номер телефона польностью`
+  String get phoneValidatorText {
+    return Intl.message(
+      'введите номер телефона польностью',
+      name: 'phoneValidatorText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
