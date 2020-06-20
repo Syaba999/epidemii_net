@@ -19,8 +19,15 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
+  static m0(count) => "не менее ${count} символов";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-
+    "email" : MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "login" : MessageLookupByLibrary.simpleMessage("Вход"),
+    "mailValidatorText" : MessageLookupByLibrary.simpleMessage("Введите корректный адрес электронной почты"),
+    "passMinLength" : m0,
+    "password" : MessageLookupByLibrary.simpleMessage("Пароль"),
+    "registration" : MessageLookupByLibrary.simpleMessage("Регистрация")
   };
 }
