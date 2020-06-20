@@ -35,7 +35,7 @@
               android:resource="@drawable/launch_background"
               />
             <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="YOUR KEY HERE"/>
+                android:value="AIzaSyAO7AvbLcgJdq_pV93Hde-N0ttZUgx1bbQ"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
