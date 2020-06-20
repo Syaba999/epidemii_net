@@ -20,77 +20,116 @@ class RegPage extends StatelessWidget {
 
   Widget _content(BuildContext context, RegState state) {
     return Scaffold(
-      body: Center(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(labelText: S.of(context).email),
-                    validator: ValidateHelper.validateMail,
-                  ),
-                  TextFormField(
-                    decoration:
-                        InputDecoration(labelText: S.of(context).firstName),
-                    validator: ValidateHelper.notNullValidator,
-                  ),
-                  TextFormField(
-                    decoration:
-                        InputDecoration(labelText: S.of(context).lastName),
-                    validator: ValidateHelper.notNullValidator,
-                  ),
-                  TextFormField(
-                    decoration:
-                        InputDecoration(labelText: S.of(context).middleName),
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                        labelText: S.of(context).phone, hintText: "+7"),
-                    inputFormatters: [_maskFormatter],
-                    validator: ValidateHelper.validatePhone,
-                  ),
-                  TextFormField(
-                    decoration:
-                        InputDecoration(labelText: S.of(context).address),
-                    validator: ValidateHelper.notNullValidator,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    onChanged: state.onChangePassword,
-                    decoration:
-                        InputDecoration(labelText: S.of(context).password),
-                    validator: ValidateHelper.validatePassword,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        labelText: S.of(context).confirmPassword),
-                    validator: state.validatePasswordConfirm,
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  RaisedButton(
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        state.signUpPress();
-                      }
-                    },
-                    child: Text(S.of(context).registration),
-                  ),
-                  FlatButton(
-                    onPressed: state.signInPress,
-                    child: Text(S.of(context).login),
-                  )
-                ],
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: 32,
               ),
-            ),
+              Image.asset("assets/images/logo.png"),
+              SizedBox(
+                height: 32,
+              ),
+              Text(
+                "ЭПИДЕМИИ-НЕТ.РФ",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(hintText: S.of(context).email),
+                validator: ValidateHelper.validateMail,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(hintText: S.of(context).firstName),
+                validator: ValidateHelper.notNullValidator,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(hintText: S.of(context).lastName),
+                validator: ValidateHelper.notNullValidator,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(hintText: S.of(context).middleName),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  hintText: S.of(context).phone,
+                ),
+                inputFormatters: [_maskFormatter],
+                validator: ValidateHelper.validatePhone,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(hintText: S.of(context).address),
+                validator: ValidateHelper.notNullValidator,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                onChanged: state.onChangePassword,
+                decoration: InputDecoration(hintText: S.of(context).password),
+                validator: ValidateHelper.validatePassword,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TextFormField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                decoration:
+                    InputDecoration(hintText: S.of(context).confirmPassword),
+                validator: state.validatePasswordConfirm,
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              Container(
+                width: double.maxFinite,
+                child: RaisedButton(
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      state.signUpPress();
+                    }
+                  },
+                  child: Text(S.of(context).registration),
+                ),
+              ),
+              FlatButton(
+                onPressed: state.signInPress,
+                child: Text(S.of(context).login),
+              )
+            ],
           ),
         ),
       ),

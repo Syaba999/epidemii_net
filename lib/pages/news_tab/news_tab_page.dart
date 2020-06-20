@@ -8,7 +8,7 @@ class NewsTabPage extends StatelessWidget {
         title: Text("Новости"),
       ),
       body: Center(
-        child: Text("Новости"),
+        child: Image.asset("assets/images/logo.png"),
       ),
     );
   }

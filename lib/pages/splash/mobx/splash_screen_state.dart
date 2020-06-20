@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:mobx_provider/mobx_provider.dart';
 
+import '../../../config/routes_val.dart';
+
 part 'splash_screen_state.g.dart';
 
 class SplashScreenState = _SplashScreenState with _$SplashScreenState;
@@ -26,7 +28,7 @@ abstract class _SplashScreenState extends MobxBase with Store {
   void _allReady() {
     final prefs = Injector.getInjector.get<PersistentDataSource>();
     final navigator = Injector.getInjector.get<NavigationService>().navigator;
-    navigator.popAndPushNamed(homePageRoute);
+    navigator.popAndPushNamed(loginPageRoute);
     if (prefs.getUser() == null) {
       //navigator.popAndPushNamed(loginPageRoute);
     } else {

@@ -20,34 +20,65 @@ class LoginPage extends StatelessWidget {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: S.of(context).email),
-                validator: ValidateHelper.validateMail,
+              Image.asset("assets/images/logo.png"),
+              SizedBox(
+                height: 32,
+              ),
+              Text(
+                "ЭПИДЕМИИ-НЕТ.РФ",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              SizedBox(
+                height: 32,
               ),
               TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(labelText: S.of(context).password),
-                validator: ValidateHelper.validatePassword,
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText: S.of(context).email,
+                ),
+                validator: ValidateHelper.validateMail,
               ),
               SizedBox(
                 height: 16,
               ),
-              RaisedButton(
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                    state.signInPress();
-                  }
-                },
-                child: Text(S.of(context).login),
+              TextFormField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: S.of(context).password,
+                ),
+                validator: ValidateHelper.validatePassword,
               ),
-              FlatButton(
-                onPressed: state.signUpPress,
-                child: Text(S.of(context).registration),
+              SizedBox(
+                height: 32,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        state.signInPress();
+                      }
+                    },
+                    child: Text(S.of(context).login),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: state.signUpPress,
+                    child: Text(S.of(context).registration),
+                  ),
+                ],
               )
             ],
           ),
