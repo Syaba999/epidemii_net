@@ -14,5 +14,17 @@
   "phone": "Телефон",
   "address": "Адрес",
   "domainMaxLengthError": "доменное имя не может быть длинне 255 символов",
-  "phoneValidatorText": "введите номер телефона польностью"
+  "phoneValidatorText": "введите номер телефона польностью",
+  "preventiveMeasures": "Меры профилактики",
+  "newsList": "Новости",
+  "notifications": "Уведомления",
+  "map": "Карта",
+  "cabinet": "Кабинет",
+  "vaccination": "Вакцинация",
+  "vaccinationPlaces": "Места вакцинации",
+  "asList": "Списком",
+  "onMap": "На карте",
+  "workTime": "Время работы",
+  "site": "Сайт",
+  "domainNotReal": "домена электронной почты не существует"
 }

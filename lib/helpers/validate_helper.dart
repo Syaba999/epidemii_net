@@ -2,19 +2,18 @@ import 'package:email_validator/email_validator.dart';
 import 'package:epidemiinet/generated/l10n.dart';
 
 abstract class ValidateHelper {
-  static String validateMail(String value) {
+  static String validateMail(String value, {bool isMailReal = true}) {
+    if (!isMailReal) return S.current.domainNotReal;
     if (EmailValidator.validate(value)) {
       final domain = value.split('@')[1];
       final domainSplit = domain.split('.');
-      final domainName =
-          Uri.parse(domainSplit.getRange(0, domainSplit.length - 1).join())
-              .toString();
-      final firstLevelDomain = Uri.parse(domainSplit.last).toString();
+      final domainName = domainSplit.getRange(0, domainSplit.length - 1).join();
+      final firstLevelDomain = domainSplit.last;
       if (domainName.length > 255) return S.current.domainMaxLengthError;
       if (firstLevelDomain.length > 63) return S.current.domainMaxLengthError;
       return null;
     }
-    return EmailValidator.validate(value) ? null : S.current.mailValidatorText;
+    return S.current.mailValidatorText;
   }
 
   static String validatePassword(String value) {

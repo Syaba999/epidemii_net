@@ -13,6 +13,7 @@ class App extends StatelessWidget {
       title: 'Эпидемии НЕТ',
       theme: appTheme,
       navigatorKey: _navigatorKey,
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

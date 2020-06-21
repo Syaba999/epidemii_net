@@ -1,16 +1,19 @@
+import 'package:epidemiinet/di/injector.dart';
+import 'package:epidemiinet/generated/l10n.dart';
 import 'package:epidemiinet/pages/cabinet_tab/cabinet_tab_page.dart';
 import 'package:epidemiinet/pages/home/mobx/home_state.dart';
-import 'package:epidemiinet/pages/map_tab/map_tab_page.dart';
 import 'package:epidemiinet/pages/news_tab/news_tab_page.dart';
 import 'package:epidemiinet/pages/notify_tab/notify_tab_page.dart';
+import 'package:epidemiinet/pages/place_tab/place_tab_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:mobx_provider/mobx_provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MobxStatelessObserver(
-      store: HomeState(),
+      store: Injector.getInjector.get<HomeState>(),
       builder: _content,
     );
   }
@@ -22,20 +25,34 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            title: Text("Новости"),
+            icon: Icon(
+              FontAwesome5.newspaper,
+            ),
+            title: Text(
+              S.of(context).newsList,
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text("Уведомления"),
+            icon: Icon(
+              FontAwesome.bell,
+            ),
+            title: Text(
+              S.of(context).notifications,
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            title: Text("Карта"),
+            icon: Icon(
+              FontAwesome5Solid.clinic_medical,
+            ),
+            title: Text(
+              S.of(context).vaccination,
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Кабинет"),
+            icon: Icon(FontAwesome.user),
+            title: Text(
+              S.of(context).cabinet,
+            ),
           ),
         ],
         onTap: state.selectTab,
@@ -45,10 +62,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  List<Widget> pages = [
+  final List<Widget> pages = [
     NewsTabPage(),
     NotifyTabPage(),
-    MapTabPage(),
+    PlaceTabPage(),
     CabinetTabPage(),
   ];
 }

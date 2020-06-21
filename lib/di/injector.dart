@@ -1,8 +1,10 @@
+import 'package:epidemiinet/api/api_client.dart';
 import 'package:epidemiinet/data/persistent/persistent_data_source.dart';
-import 'package:epidemiinet/pages/auth/login/login_page.dart';
-import 'package:epidemiinet/pages/auth/reg/reg_page.dart';
-import 'package:epidemiinet/pages/home/home_page.dart';
+import 'package:epidemiinet/pages/home/mobx/home_state.dart';
+import 'package:epidemiinet/pages/news_tab/mobx/news_state.dart';
+import 'package:epidemiinet/pages/place_tab/mobx/place_tab_state.dart';
 import 'package:epidemiinet/services/navigation_service.dart';
+import 'package:epidemiinet/state/global_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 
@@ -12,15 +14,17 @@ class Injector {
   static GetIt get getInjector => _injector;
 
   static void initDI(GlobalKey<NavigatorState> navigatorKey) {
-    _registerPagesFactories();
     _injector.registerLazySingleton(() => NavigationService(navigatorKey));
     _injector.registerSingletonAsync(
         () async => await PersistentDataSource.create());
+    _injector.registerLazySingleton(() => ApiClient.init());
+    _registerSingletonStates();
   }
 
-  static void _registerPagesFactories() {
-    _injector.registerFactory(() => HomePage());
-    _injector.registerFactory(() => LoginPage());
-    _injector.registerFactory(() => RegPage());
+  static void _registerSingletonStates() {
+    _injector.registerLazySingleton(() => GlobalState());
+    _injector.registerLazySingleton(() => NewsState());
+    _injector.registerLazySingleton(() => PlaceTabState());
+    _injector.registerLazySingleton(() => HomeState());
   }
 }

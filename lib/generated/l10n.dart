@@ -192,6 +192,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Меры профилактики`
+  String get preventiveMeasures {
+    return Intl.message(
+      'Меры профилактики',
+      name: 'preventiveMeasures',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Новости`
+  String get newsList {
+    return Intl.message(
+      'Новости',
+      name: 'newsList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Уведомления`
+  String get notifications {
+    return Intl.message(
+      'Уведомления',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Карта`
+  String get map {
+    return Intl.message(
+      'Карта',
+      name: 'map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Кабинет`
+  String get cabinet {
+    return Intl.message(
+      'Кабинет',
+      name: 'cabinet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вакцинация`
+  String get vaccination {
+    return Intl.message(
+      'Вакцинация',
+      name: 'vaccination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Места вакцинации`
+  String get vaccinationPlaces {
+    return Intl.message(
+      'Места вакцинации',
+      name: 'vaccinationPlaces',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Списком`
+  String get asList {
+    return Intl.message(
+      'Списком',
+      name: 'asList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `На карте`
+  String get onMap {
+    return Intl.message(
+      'На карте',
+      name: 'onMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Время работы`
+  String get workTime {
+    return Intl.message(
+      'Время работы',
+      name: 'workTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сайт`
+  String get site {
+    return Intl.message(
+      'Сайт',
+      name: 'site',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `домена электронной почты не существует`
+  String get domainNotReal {
+    return Intl.message(
+      'домена электронной почты не существует',
+      name: 'domainNotReal',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

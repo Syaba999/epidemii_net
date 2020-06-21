@@ -1,6 +1,7 @@
 import 'package:epidemiinet/pages/splash/mobx/splash_screen_state.dart';
+import 'package:epidemiinet/widgets/app_logo.dart';
+import 'package:epidemiinet/widgets/loader.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mobx_provider/mobx_provider.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -18,11 +19,12 @@ class SplashScreen extends StatelessWidget {
 
   Widget _content(BuildContext context, SplashScreenState store) {
     return Scaffold(
-      body: Center(
-        child: SpinKitRotatingPlain(
-          color: Theme.of(context).accentColor,
-          size: 50.0,
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AppLogo(),
+          Loader(),
+        ],
       ),
     );
   }

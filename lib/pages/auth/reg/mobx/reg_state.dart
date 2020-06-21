@@ -11,6 +11,9 @@ class RegState = _RegState with _$RegState;
 abstract class _RegState extends MobxBase with Store {
   final _navigator = Injector.getInjector.get<NavigationService>().navigator;
 
+  @observable
+  bool isMailReal = true;
+
   String _password = '';
 
   void onChangePassword(String value) {

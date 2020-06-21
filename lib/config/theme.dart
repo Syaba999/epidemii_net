@@ -16,10 +16,10 @@ final ThemeData appTheme = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(width: 2, color: _accentColor)),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(width: 2, color: _accentColor)),
     ));
 

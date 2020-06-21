@@ -1,6 +1,7 @@
 import 'package:epidemiinet/generated/l10n.dart';
 import 'package:epidemiinet/helpers/validate_helper.dart';
 import 'package:epidemiinet/pages/auth/reg/mobx/reg_state.dart';
+import 'package:epidemiinet/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mobx_provider/mobx_provider.dart';
@@ -19,34 +20,29 @@ class RegPage extends StatelessWidget {
   }
 
   Widget _content(BuildContext context, RegState state) {
+    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+      if (!state.isMailReal) {
+        _formKey.currentState.validate();
+      }
+    });
     return Scaffold(
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(
                 height: 32,
               ),
-              Image.asset("assets/images/logo.png"),
-              SizedBox(
-                height: 32,
-              ),
-              Text(
-                "ЭПИДЕМИИ-НЕТ.РФ",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              SizedBox(
-                height: 32,
-              ),
+              AppLogo(),
               TextFormField(
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(hintText: S.of(context).email),
-                validator: ValidateHelper.validateMail,
+                validator: (value) => ValidateHelper.validateMail(value,
+                    isMailReal: state.isMailReal),
               ),
               SizedBox(
                 height: 16,

@@ -28,7 +28,7 @@ abstract class _SplashScreenState extends MobxBase with Store {
   void _allReady() {
     final prefs = Injector.getInjector.get<PersistentDataSource>();
     final navigator = Injector.getInjector.get<NavigationService>().navigator;
-    navigator.popAndPushNamed(loginPageRoute);
+    navigator.popAndPushNamed(homePageRoute);
     if (prefs.getUser() == null) {
       //navigator.popAndPushNamed(loginPageRoute);
     } else {
