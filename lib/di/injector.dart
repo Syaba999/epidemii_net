@@ -1,3 +1,4 @@
+import 'package:epidemiinet/api/api_auth_client.dart';
 import 'package:epidemiinet/api/api_client.dart';
 import 'package:epidemiinet/data/persistent/persistent_data_source.dart';
 import 'package:epidemiinet/pages/home/mobx/home_state.dart';
@@ -18,6 +19,7 @@ class Injector {
     _injector.registerSingletonAsync(
         () async => await PersistentDataSource.create());
     _injector.registerLazySingleton(() => ApiClient.init());
+    _injector.registerLazySingleton(() => ApiAuthClient.init());
     _registerSingletonStates();
   }
 

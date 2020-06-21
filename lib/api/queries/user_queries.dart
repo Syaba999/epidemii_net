@@ -1,13 +1,7 @@
 const String getUser = r'''
-query ReadUser($nUserId: ID!){
-  user(id: $nUserId){
-    address
-    email
-    firstName
+query{
+  user{
     id
-    lastName
-    middleName
-    phone
   }
 }
 ''';

@@ -16,13 +16,15 @@ class PersistentDataSource {
 
   User getUser() {
     final userString = _localStorage.getString(_kUser);
-    if (userString == null) {
-      return null;
-    }
+    if (userString == null) return null;
     return User.fromJson(jsonDecode(userString));
   }
 
-  void saveUser(User user) {
+  void setUser(User user) {
     _localStorage.setString(_kUser, jsonEncode(user));
+  }
+
+  void removeUser() {
+    _localStorage.remove(_kUser);
   }
 }

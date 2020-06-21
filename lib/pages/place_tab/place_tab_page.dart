@@ -31,20 +31,20 @@ class PlaceTabPage extends StatelessWidget {
       body: state.listType == ListType.map
           ? _buildMap(context, state)
           : _buildList(context, state),
-      floatingActionButton: FloatingActionButton.extended(
+      /*floatingActionButton: FloatingActionButton.extended(
         icon: Icon(state.listType == ListType.map ? Icons.list : Icons.map),
         label: Text(state.listType == ListType.map
             ? S.of(context).asList
             : S.of(context).onMap),
         onPressed: state.toggleListType,
-      ),
+      ),*/
     );
   }
 
   Widget _buildList(BuildContext context, PlaceTabState state) {
     return ListView.builder(
         shrinkWrap: true,
-        padding: const EdgeInsets.only(bottom: 80),
+        //padding: const EdgeInsets.only(bottom: 80),
         itemCount: state.vaccinationsPlaces.length,
         itemBuilder: (context, index) => VaccinationPlaceCard(
               place: state.vaccinationsPlaces[index],

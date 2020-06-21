@@ -30,12 +30,12 @@ class NewsTabPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          InkWell(
-            onTap: state.preventiveButtonPressed,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: Card(
-                color: Theme.of(context).accentColor,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: Card(
+              color: Theme.of(context).accentColor,
+              child: InkWell(
+                onTap: state.preventiveButtonPressed,
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Center(

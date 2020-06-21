@@ -2,6 +2,7 @@ import 'package:epidemiinet/config/routes_val.dart';
 import 'package:epidemiinet/data/persistent/persistent_data_source.dart';
 import 'package:epidemiinet/di/injector.dart';
 import 'package:epidemiinet/services/navigation_service.dart';
+import 'package:epidemiinet/state/global_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:mobx_provider/mobx_provider.dart';
@@ -26,13 +27,14 @@ abstract class _SplashScreenState extends MobxBase with Store {
   }
 
   void _allReady() {
-    final prefs = Injector.getInjector.get<PersistentDataSource>();
     final navigator = Injector.getInjector.get<NavigationService>().navigator;
-    navigator.popAndPushNamed(homePageRoute);
-    if (prefs.getUser() == null) {
-      //navigator.popAndPushNamed(loginPageRoute);
+    final prefs = Injector.getInjector.get<PersistentDataSource>();
+    final user = prefs.getUser();
+    if (user == null) {
+      navigator.popAndPushNamed(loginPageRoute);
     } else {
-      //navigator.popAndPushNamed(homePageRoute);
+      Injector.getInjector.get<GlobalState>().user = user;
+      navigator.popAndPushNamed(homePageRoute);
     }
   }
 
